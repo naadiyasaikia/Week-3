@@ -1,0 +1,1 @@
+This project was done for week 3 of web programming at LUT University, to fetch data from an API and learning to style with CSS. The aim is to create a styled table that shows population data from different municipalities.
