@@ -1,0 +1,7 @@
+body {
+    font-family: Verdana, Arial, sans-serif;   
+}
+td {
+    padding: 6px;
+    border-bottom: 1px solid grey;
+}
