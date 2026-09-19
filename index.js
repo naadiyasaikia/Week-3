@@ -601,19 +601,29 @@ async function load_data() { //to make sure data loads upon page opening
     "format": "json-stat2"
   }
 };
-const response = await fetch(URL, {
+const response = await fetch(url, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(population_query)
   });
-}
-const myResponse = response.json();
-const municipalities = Object.values(dimension.alue_23_20260101.category.label)
-const values = Object.values(value)
+const data = await response.json();
+const municipalities = Object.values(data.dimension.alue_23_20260101.category.label)
+const values = Object.values(data.value)
 
 //populating table??
 const tablebody = document.getElementById("table");
+tablebody.innerHTML = "";
+municipalities.forEach((name, index) => {
+  const row = document.createElement("tr");
+  const cellName = document.createElement("td");
+  cellName.textContent = name;
+  const cellPop = document.createElement("td");
+  cellPop.textContent = values[index];
 
-
+  row.appendChild(cellName);
+  row.appendChild(cellPop);
+  tablebody.appendChild(row);
+});
+}
 //triggering fetch
 document.addEventListener("DOMContentLoaded", load_data); //what does domcontentloaded do??
